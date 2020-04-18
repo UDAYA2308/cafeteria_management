@@ -16,7 +16,7 @@ class OrdersTest < ApplicationSystemTestCase
 
     fill_in "Date", with: @order.date
     fill_in "Delivered at", with: @order.delivered_at
-    fill_in "Status code", with: @order.status_code_id
+    fill_in "Status", with: @order.status
     fill_in "User", with: @order.user_id
     click_on "Create Order"
 
@@ -30,7 +30,7 @@ class OrdersTest < ApplicationSystemTestCase
 
     fill_in "Date", with: @order.date
     fill_in "Delivered at", with: @order.delivered_at
-    fill_in "Status code", with: @order.status_code_id
+    fill_in "Status", with: @order.status
     fill_in "User", with: @order.user_id
     click_on "Update Order"
 

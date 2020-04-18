@@ -2,12 +2,12 @@
 
 one:
   user_id: 
-  date: 2020-04-17 09:24:04
-  delivered_at: 2020-04-17 09:24:04
-  status_code_id: 
+  date: 2020-04-17 12:09:36
+  delivered_at: 2020-04-17 12:09:36
+  status: MyString
 
 two:
   user_id: 
-  date: 2020-04-17 09:24:04
-  delivered_at: 2020-04-17 09:24:04
-  status_code_id: 
+  date: 2020-04-17 12:09:36
+  delivered_at: 2020-04-17 12:09:36
+  status: MyString

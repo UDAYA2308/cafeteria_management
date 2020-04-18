@@ -1,0 +1,11 @@
+<% MenuItem.joins(:menu).where("menu_id = ?",menu_id).each do |item| %> 
+  <%= form_with url: create_cart_path do |form| %>
+    <div class="Menu-items">
+      <p class="Menu-item-name">  <%= item.menu_item_name%> </p>
+      <p class="Menu-item-name">  <%= item.menu_item_price %> </p>
+      <%= hidden_field_tag 'menu_item_id',item.id%>
+      <%= hidden_field_tag 'menu_id',item.menu_id%>
+      <%= hidden_field_tag 'user_id', @current_user.id %>
+    </div>
+  <% end %>
+<% end %>

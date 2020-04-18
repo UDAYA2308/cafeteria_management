@@ -1,37 +1,15 @@
-<%= form_with(model: order, local: true) do |form| %>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
-
-      <ul>
-        <% order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<% MenuItem.all.each do |item| %> 
+  <%= form_with url: create_cart_path do |form| %>
+    <div class="Menu-items">
+      <p class="Menu-item-name"> <%= item.menu_item_name%> </p>
+      <p class="Menu-item-"> <%= item.menu_item_price %> </p>
+      <%= hidden_field_tag 'menu_item_id',item.id%>
+      <%= hidden_field_tag 'menu_id',item.menu_id%>
+      <%= hidden_field_tag 'user_id', @current_user.id %>
+      <%= number_field_tag 'quantity',0 ,min: 0 , :onclick => "submit()" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delivered_at %>
-    <%= form.datetime_select :delivered_at %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status_code_id %>
-    <%= form.text_field :status_code_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<% end %>
+<%= form_with url: carts_path , method: "GET" do %>  
+  <%= button_tag 'View cart' , :onclick => "submit()" %>
 <% end %>

@@ -15,9 +15,8 @@ class MenuItemsTest < ApplicationSystemTestCase
     click_on "New Menu Item"
 
     fill_in "Menu", with: @menu_item.menu_id
-    fill_in "Menu item", with: @menu_item.menu_item_id
     fill_in "Menu item name", with: @menu_item.menu_item_name
-    fill_in "Menu price", with: @menu_item.menu_price
+    fill_in "Menu item price", with: @menu_item.menu_item_price
     fill_in "Stock", with: @menu_item.stock
     click_on "Create Menu item"
 
@@ -30,9 +29,8 @@ class MenuItemsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Menu", with: @menu_item.menu_id
-    fill_in "Menu item", with: @menu_item.menu_item_id
     fill_in "Menu item name", with: @menu_item.menu_item_name
-    fill_in "Menu price", with: @menu_item.menu_price
+    fill_in "Menu item price", with: @menu_item.menu_item_price
     fill_in "Stock", with: @menu_item.stock
     click_on "Update Menu item"
 

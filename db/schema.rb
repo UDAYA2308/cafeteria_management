@@ -10,16 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_035441) do
+ActiveRecord::Schema.define(version: 2020_04_17_122413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "menu_item_id"
+    t.integer "quantity"
+    t.bigint "menu_id"
+  end
+
   create_table "menu_items", force: :cascade do |t|
     t.bigint "menu_id"
-    t.bigint "menu_item_id"
     t.string "menu_item_name"
-    t.float "menu_price"
+    t.float "menu_item_price"
     t.integer "stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -27,15 +33,16 @@ ActiveRecord::Schema.define(version: 2020_04_17_035441) do
 
   create_table "menus", force: :cascade do |t|
     t.string "menu_name"
+    t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "order_details", force: :cascade do |t|
+  create_table "order_items", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "menu_item_id"
     t.string "menu_item_name"
-    t.float "menu_price"
+    t.float "menu_item_price"
     t.integer "quantity"
     t.float "total"
     t.datetime "created_at", precision: 6, null: false
@@ -46,12 +53,6 @@ ActiveRecord::Schema.define(version: 2020_04_17_035441) do
     t.bigint "user_id"
     t.datetime "date"
     t.datetime "delivered_at"
-    t.bigint "status_code_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "status_codes", force: :cascade do |t|
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

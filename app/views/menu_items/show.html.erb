@@ -1,29 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Menu:</strong>
-  <%= @menu_item.menu_id %>
-</p>
+<h1>Menu Items</h1>
 
-<p>
-  <strong>Menu item:</strong>
-  <%= @menu_item.menu_item_id %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Menu</th>
+      <th>Menu item name</th>
+      <th>Menu item price</th>
+      <th>Stock</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Menu item name:</strong>
-  <%= @menu_item.menu_item_name %>
-</p>
+  <tbody>
+    <% @menu_items.each do |menu_item| %>
+      <tr>
+        <td><%= menu_item.menu_id %></td>
+        <td><%= menu_item.menu_item_name %></td>
+        <td><%= menu_item.menu_item_price %></td>
+        <td><%= menu_item.stock %></td>
+        <% if @current_user.role == 'owner'%>
+          <td><%= link_to 'Edit', edit_menu_item_path(menu_item) %></td>
+          <td><%= link_to 'Destroy', menu_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<p>
-  <strong>Menu price:</strong>
-  <%= @menu_item.menu_price %>
-</p>
+<br>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @menu_item.stock %>
-</p>
-
-<%= link_to 'Edit', edit_menu_item_path(@menu_item) %> |
-<%= link_to 'Back', menu_items_path %>
+<% if @current_user.role == 'owner'%>
+  <%= link_to 'New Menu Item', new_menu_item_path %>
+<% end %>
+      

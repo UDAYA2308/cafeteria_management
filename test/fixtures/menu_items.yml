@@ -2,14 +2,12 @@
 
 one:
   menu_id: 
-  menu_item_id: 
   menu_item_name: MyString
-  menu_price: 1.5
+  menu_item_price: 1.5
   stock: 1
 
 two:
   menu_id: 
-  menu_item_id: 
   menu_item_name: MyString
-  menu_price: 1.5
+  menu_item_price: 1.5
   stock: 1

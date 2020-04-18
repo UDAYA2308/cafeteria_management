@@ -2,6 +2,8 @@
 
 one:
   menu_name: MyString
+  active: false
 
 two:
   menu_name: MyString
+  active: false

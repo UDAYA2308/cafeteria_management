@@ -14,6 +14,7 @@ class MenusTest < ApplicationSystemTestCase
     visit menus_url
     click_on "New Menu"
 
+    check "Active" if @menu.active
     fill_in "Menu name", with: @menu.menu_name
     click_on "Create Menu"
 
@@ -25,6 +26,7 @@ class MenusTest < ApplicationSystemTestCase
     visit menus_url
     click_on "Edit", match: :first
 
+    check "Active" if @menu.active
     fill_in "Menu name", with: @menu.menu_name
     click_on "Update Menu"
 
